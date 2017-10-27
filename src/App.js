@@ -1,12 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux'
+import * as fromCounter from './reducers/rootReducer'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-      </div>
-    );
-  }
+const App = (props) => {
+  const increaseCnt = () => props.increaseCount(1)
+  return (
+    <div className="App">
+      <button onClick={increaseCnt}>{props.count}</button>
+    </div>
+  )
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    count: state.count
+  }
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    increaseCount: (value) => dispatch(fromCounter.increaseCount(value))
+  }
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)
