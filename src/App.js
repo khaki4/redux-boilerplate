@@ -18,7 +18,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    increaseCount: (value) => dispatch(fromCounter.increaseCount(value))
+    increaseCount: (value) => dispatch(fromCounter.increaseAsync(value))
   }
 }
 export default connect(

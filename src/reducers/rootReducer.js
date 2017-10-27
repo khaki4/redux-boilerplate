@@ -12,10 +12,12 @@ export const INCREASE_COUNT = `${BASE_PREFIX}INCREASE_COUNT`
 // Action Creators
 export const increaseCount = (num) => ({ type: INCREASE_COUNT, payload: num })
 
-export const increaseAsync = (value) => (dispatch) => {
-  setTimeout(() => {
-    dispatch(increaseCount(value))
-  }, 1000);
+export const increaseAsync = (value) => {
+  return (dispatch) => {
+    setTimeout(() => {
+      dispatch(increaseCount(value))
+    }, 1000);
+  }
 }
 
 // Reducers
